@@ -8,7 +8,18 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.Date;
+/*
+@Entity is a JPA annotation that marks a Java class as a database entity — meaning it maps to a table in the database.
+ @EntityListeners(AuditingEntityListener.class) — What It Does
+This annotation is used in Spring Data JPA to enable automatic population of audit fields, like:
+@CreatedDate
+@LastModifiedDate
+@CreatedBy
+@LastModifiedBy
 
+
+
+ */
 @Getter
 @Setter
 @Builder
@@ -16,11 +27,9 @@ import java.util.Date;
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Review {
+@Table(name="bookingreview")
+public class Review extends BaseModel{
 
-    @Id  //this annotation makes the id property a primary key of our table
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(nullable = false)
     private String content;
@@ -28,14 +37,6 @@ public class Review {
     @Column(nullable = false)
      private Double rating;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)// this annotation tells spring about the formats of Date object to be stored i.e. Date/Time?Timestamp
-    @CreatedDate  //this annotation tells spring that only handle it for object creation
-    private Date createdAt;
 
-    @Column(nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    @LastModifiedDate   //this annotation tells spring that only handle it for object update
-    private Date updatedAt;
 
 }
