@@ -28,14 +28,15 @@ This annotation is used in Spring Data JPA to enable automatic population of aud
 @EntityListeners(AuditingEntityListener.class)
 @Entity
 @Table(name="bookingreview")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Review extends BaseModel{
 
 
     @Column(nullable = false)
-    private String content;
+    protected String content;
 
     @Column(nullable = false)
-     private Double rating;
+    protected Double rating;
 
 
 

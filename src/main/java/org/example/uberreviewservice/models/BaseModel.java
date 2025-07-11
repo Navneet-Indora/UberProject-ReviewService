@@ -25,7 +25,7 @@ In JPA, @Temporal is used to tell Hibernate how to store Java Date or Calendar f
 public abstract class BaseModel {
 
     @Id  //this annotation makes the id property a primary key of our table
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//auto increment
     protected Long id;
 
     @Column(nullable = false)
