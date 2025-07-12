@@ -37,4 +37,6 @@ public abstract class BaseModel {
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate   //this annotation tells spring that only handle it for object update
     protected Date updatedAt;
+
+
 }

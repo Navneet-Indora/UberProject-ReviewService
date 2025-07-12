@@ -33,11 +33,11 @@ public class Review extends BaseModel{
 
 
     @Column(nullable = false)
-    protected String content;
+    private String content;
 
     @Column(nullable = false)
-    protected Double rating;
+    private Double rating;
 
 
+    }
 
-}
