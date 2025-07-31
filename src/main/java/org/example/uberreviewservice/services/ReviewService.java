@@ -1,37 +1,22 @@
 package org.example.uberreviewservice.services;
 
-import org.example.uberreviewservice.models.Booking;
 import org.example.uberreviewservice.models.Review;
-import org.example.uberreviewservice.repositories.BookingRepository;
-import org.example.uberreviewservice.repositories.ReviewRepository;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 @Service
-public class ReviewService implements CommandLineRunner {
+public interface ReviewService {
 
-    private final BookingRepository bookingRepository;
-    private ReviewRepository reviewRepository;
+    public Optional<Review> findReviewById(Long id);
 
-    public ReviewService(ReviewRepository reviewRepository, BookingRepository bookingRepository) {
-        this.reviewRepository = reviewRepository;
-        this.bookingRepository = bookingRepository;
-    }
-    @Override
-    public void run(String... args) throws Exception
-    {
-        Review r= Review.builder()
-                .content("Nice Ride asdf")
-                .rating(4.5).build(); // code to create plain java object
+    public List<Review> findAllReviews();
 
-           Booking b= Booking
-                      .builder()
-                      .endTime (new Date())
-                      .build();
-           System.out.println(r);
-           bookingRepository.save(b);
-          reviewRepository.save(r);  // this code executes sql query
-    }
+    public boolean deleteReviewById(Long id);
+
+    public Review publishReview(Review review);
+
+    public Review updateReview(Long id, Review review);
 }
